@@ -12,8 +12,12 @@ M5Core2_SG90_StackChan_VoiceText_Ataru
 * [ESP8266Audio](https://github.com/earlephilhower/ESP8266Audio/ "Title")ライブラリ(バージョン 1.9.3で動作確認をしました。)<br><br>
 
 ### M5Stack-Avatarライブラリを変更する ###
-* "Avatar.cpp"の下図赤枠部分を変更しておきます。
+* "Avatar.cpp"の下図赤枠部分を変更します。
 ![画像1](images/image1.png)<br><br><br>
+* "Avatar.cpp""Avatar.h"の下図赤枠部分を追加します。
+![画像2](images/image2.png)<br><br><br>
+![画像3](images/image3.png)<br><br><br>
+
 
 ---
 
@@ -25,11 +29,6 @@ M5Stack Core2の場合、M5Stack-AvatarとHOYA社が提供する[VoiceText Web A
 VoiceText TTSは、kghrlaboさんのesp32_text_to_speechを参考にさせていただきました。<br>
 オリジナルはこちら。<br>
 esp32_text_to_speech <https://github.com/kghrlabo/esp32_text_to_speech><br>
-
-### M5Stack-Avatarライブラリの変更 ###
-* "Avatar.cpp""Avatar.h"の下図赤枠部分を追加します。
-![画像2](images/image2.png)<br><br><br>
-![画像3](images/image3.png)<br><br><br>
 
 ### VoiceTextの有効化 ###
 * M5Core2_SG90_StackChan_VoiceText_Ataru.inoの22行目のコメントを外して”USE_VOICE_TEXT”を有効化してください。
