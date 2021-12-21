@@ -11,11 +11,13 @@ M5Core2_SG90_StackChan_VoiceText_Ataru
 * [ｽﾀｯｸﾁｬﾝ M5GoBottom版組み立てキット](https://raspberrypi.mongonta.com/about-products-stackchan-m5gobottom-version/ "Title")<br>
 
 ### このプログラムをビルドするのに必要な物 ###
-* Arduino IDE (バージョン 1.8.15で動作確認をしました。1.8.16だとエラーになるという報告を頂きました)<br>
+* Arduino IDE (バージョン 1.8.15で動作確認をしました。~~1.8.16だとエラーになるという報告を頂きました~~)<br>
 * [M5Stack-Avatar](https://github.com/meganetaaan/m5stack-avatar/ "Title")ライブラリ(バージョン 0.7.3で動作確認をしました。)<br>
 * [ServoEasing](https://github.com/ArminJo/ServoEasing/ "Title")ライブラリ(バージョン 2.4.0で動作確認をしました。)<br>
 * [ESP32Servo](https://github.com/madhephaestus/ESP32Servo/ "Title")ライブラリ(バージョン 0.9.0で動作確認をしました。)<br>
 * [ESP8266Audio](https://github.com/earlephilhower/ESP8266Audio/ "Title")ライブラリ(バージョン 1.9.3で動作確認をしました。)<br><br>
+
+(arduino-esp32 v2.0.1だとエラーになるという報告を頂きました。)
 
 ### M5Stack-Avatarライブラリを変更する ###
 * "Avatar.cpp"の下図赤枠部分を変更します。
