@@ -3,7 +3,8 @@ M5Core2_SG90_StackChan_VoiceText_Ataru
 
 @mongonta555 さんが[ｽﾀｯｸﾁｬﾝ M5GoBottom版組み立てキット](https://raspberrypi.mongonta.com/about-products-stackchan-m5gobottom-version/ "Title")の頒布を始められたので、それに対応したｽﾀｯｸﾁｬﾝファームを作ってみました。<br>
 
-![画像ataru](images/ataru.png)<br><br>
+![画像ataru](images/ataru.png)<br>
+
 ---
 ### M5GoBottom版ｽﾀｯｸﾁｬﾝ本体を作るのに必要な物、及び作り方 ###
 こちらを参照してください。<br>
