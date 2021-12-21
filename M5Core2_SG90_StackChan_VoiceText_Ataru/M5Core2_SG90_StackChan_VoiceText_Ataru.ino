@@ -1,4 +1,4 @@
-#include <arduino.h>
+#include <Arduino.h>
 
 #if defined(ARDUINO_M5STACK_Core2)
   #include <M5Core2.h>
