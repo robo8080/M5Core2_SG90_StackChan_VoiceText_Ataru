@@ -8,7 +8,11 @@ M5Core2_SG90_StackChan_VoiceText_Ataru
 こちらを参照してください。<br>
 * [ｽﾀｯｸﾁｬﾝ M5GoBottom版組み立てキット](https://raspberrypi.mongonta.com/about-products-stackchan-m5gobottom-version/ "Title")<br>
 
-### このプログラムをビルドするのに追加で必要な物 ###
+### このプログラムをビルドするのに必要な物 ###
+* Arduino IDE (バージョン 1.8.15で動作確認をしました。1.8.16だとエラーになるという報告を頂きました)<br>
+* [M5Stack-Avatar](https://github.com/meganetaaan/m5stack-avatar/ "Title")ライブラリ(バージョン 0.7.3で動作確認をしました。)<br>
+* [ServoEasing](https://github.com/ArminJo/ServoEasing/ "Title")ライブラリ(バージョン 2.4.0で動作確認をしました。)<br>
+* [ESP32Servo](https://github.com/madhephaestus/ESP32Servo/ "Title")ライブラリ(バージョン 0.9.0で動作確認をしました。)<br>
 * [ESP8266Audio](https://github.com/earlephilhower/ESP8266Audio/ "Title")ライブラリ(バージョン 1.9.3で動作確認をしました。)<br><br>
 
 ### M5Stack-Avatarライブラリを変更する ###
@@ -17,6 +21,8 @@ M5Core2_SG90_StackChan_VoiceText_Ataru
 * "Avatar.cpp""Avatar.h"の下図赤枠部分を追加します。
 ![画像2](images/image2.png)<br><br><br>
 ![画像3](images/image3.png)<br><br><br>
+* "DrawContext.h"の下図赤枠部分を変更します。
+![画像4](images/image4.png)<br><br><br>
 
 
 ---
@@ -42,6 +48,7 @@ APIキーは、[ここ](https://cloud.voicetext.jp/webapi/ "Title")の「無料�
 
 ### VoiceText版の使い方 ###
 * M5Stack Core2のボタンA,B,Cを押すと、それぞれ異なった声でしゃべります。　<br>
+音声データをダウンロード中は顔にハートマークが表示されます。<br>
 TTSのパラメータの詳細はこちらを参照してください。<br>
 [VoiceText Web API [API マニュアル](https://cloud.voicetext.jp/webapi/docs/api/ "Title")]
 <br><br>
