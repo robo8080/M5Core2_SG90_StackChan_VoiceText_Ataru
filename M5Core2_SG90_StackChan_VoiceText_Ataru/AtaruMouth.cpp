@@ -19,6 +19,8 @@ void AtaruMouth::draw(TFT_eSPI *spi, BoundingRect rect, DrawContext *ctx) {
   uint16_t backgroundColor = ctx->getColorPalette()->get(COLOR_BACKGROUND);
   float breath = _min(1.0f, ctx->getBreath());
   float openRatio = ctx->getMouthOpenRatio();
+  Gaze g = ctx->getGaze();                    //
+  uint32_t offsetY = g.getVertical() * 10;    //
   int h = minHeight + (maxHeight - minHeight) * openRatio;
   int w = minWidth + (maxWidth - minWidth) * (1 - openRatio);
   int x = rect.getLeft() - w / 2;
@@ -26,8 +28,8 @@ void AtaruMouth::draw(TFT_eSPI *spi, BoundingRect rect, DrawContext *ctx) {
   if (openRatio == 0.0)
   {
     if (exp == Expression::Neutral || exp == Expression::Happy) {
-      spi->fillEllipse(x+w/2, y+h/2, w/2, minHeight*6, primaryColor);
-      spi->fillEllipse(x+w/2, y+h/2-5, w/2, minHeight*6, backgroundColor);
+      spi->fillEllipse(x+w/2, y+h/2, w/2, minHeight*6+offsetY, primaryColor);       //+offsetY
+      spi->fillEllipse(x+w/2, y+h/2-5, w/2, minHeight*6+offsetY, backgroundColor);  //+offsetY
       spi->fillRect(x, y+h/2- minHeight*6-5, w, minHeight*6+5, backgroundColor);
     }else if (exp == Expression::Angry || exp == Expression::Sad) {
         spi->fillEllipse(x+w/2, y+h/2+minHeight*6, w/2, minHeight*6, primaryColor);
