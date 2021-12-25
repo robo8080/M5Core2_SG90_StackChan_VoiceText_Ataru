@@ -230,9 +230,5 @@ void loop() {
     avatar.setFace(faces[2]);
     avatar.setColorPalette(*cps[2]);
   }
-  avatar.setMouthOpenRatio(0.7);
-  delay(200);
-  avatar.setMouthOpenRatio(0.0);
-  delay(2000);
 #endif
 }
