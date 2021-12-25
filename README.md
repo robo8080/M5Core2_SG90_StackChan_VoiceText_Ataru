@@ -49,8 +49,11 @@ esp32_text_to_speech <https://github.com/kghrlabo/esp32_text_to_speech><br>
 * AudioFileSourceVoiceTextStream.cppの30行目付近、YOUR_TSS_API_KEYを設定してください。<br>
 APIキーは、[ここ](https://cloud.voicetext.jp/webapi/ "Title")の「無料利用登録」から申請すれば、メールで送られて来ます。<br>
 
-### VoiceText版の使い方 ###
-* M5Stack Core2のボタンA,B,Cを押すと、それぞれ異なった声でしゃべります。　<br>
+---
+
+### 使い方 ###
+* VoiceTextを有効にしていない場合：M5Stack Core2のボタンA,B,Cを押すと、それぞれ異なった顔を表示します。　<br>
+* VoiceTextを有効にしている場合：M5Stack Core2のボタンA,B,Cを押すと、それぞれ異なった顔と声でしゃべります。　<br>
 音声データをダウンロード中は顔にハートマークが表示されます。<br>
 TTSのパラメータの詳細はこちらを参照してください。<br>
 [VoiceText Web API [API マニュアル](https://cloud.voicetext.jp/webapi/docs/api/ "Title")]

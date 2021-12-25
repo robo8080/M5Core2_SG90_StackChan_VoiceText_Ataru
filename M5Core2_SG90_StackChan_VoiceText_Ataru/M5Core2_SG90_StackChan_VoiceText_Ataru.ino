@@ -17,6 +17,7 @@
 #include <Avatar.h> // https://github.com/meganetaaan/m5stack-avatar
 #include <ServoEasing.hpp> // https://github.com/ArminJo/ServoEasing       
 #include "AtaruFace.h"
+#include "RamFace.h"
 
 #if defined(ARDUINO_M5STACK_Core2)
 //#define USE_VOICE_TEXT //for M5STACK_Core2 Only
@@ -41,6 +42,8 @@ uint8_t *preallocateBuffer;
 
 using namespace m5avatar;
 Avatar avatar;
+Face* faces[3];
+ColorPalette* cps[3];
 
 #define START_DEGREE_VALUE_X 90
 #define START_DEGREE_VALUE_Y 90
@@ -127,20 +130,32 @@ void setup() {
   mp3 = new AudioGeneratorMP3();
 #endif
 
-  avatar.setFace(new AtaruFace());
-  ColorPalette* cp = new ColorPalette();
-  cp->set(COLOR_PRIMARY, TFT_BLACK);
-  cp->set(COLOR_BACKGROUND, TFT_WHITE);
-  cp->set(COLOR_SECONDARY, TFT_WHITE);
-  avatar.setColorPalette(*cp);
+  faces[0] = new AtaruFace();
+  faces[1] = new RamFace();
+  faces[2] = avatar.getFace();
+  cps[0] = new ColorPalette();
+  cps[1] = new ColorPalette();
+  cps[2] = new ColorPalette();
+  cps[0]->set(COLOR_PRIMARY, TFT_BLACK);
+  cps[0]->set(COLOR_BACKGROUND, TFT_WHITE);
+  cps[0]->set(COLOR_SECONDARY, TFT_WHITE);
+  cps[1]->set(COLOR_PRIMARY, TFT_BLACK);
+  cps[1]->set(COLOR_BACKGROUND, TFT_WHITE);
+  cps[1]->set(COLOR_SECONDARY, TFT_WHITE);
+
   avatar.init();
+  avatar.setFace(faces[0]);
+  avatar.setColorPalette(*cps[0]);
   avatar.addTask(behavior, "behavior");
 }
 
 #ifdef USE_VOICE_TEXT
-char *text1 = "こんにちは、世界！";
-char *tts_parms1 ="&emotion_level=2&emotion=happiness&format=mp3&speaker=hikari&volume=200&speed=120&pitch=130";
-char *tts_parms2 ="&emotion_level=2&emotion=happiness&format=mp3&speaker=takeru&volume=200&speed=100&pitch=130";
+//char *text1 = "こんにちは、世界！";
+char *text1 = "こんにちは、僕の名前はあたるです。よろしくね！";
+char *text2 = "こんにちは、私の名前はラムちゃんです。よろしくね！";
+char *text3 = "こんにちは、私の名前はスタックちゃんです。よろしくね！";
+char *tts_parms1 ="&emotion_level=2&emotion=happiness&format=mp3&speaker=takeru&volume=200&speed=100&pitch=130";
+char *tts_parms2 ="&emotion_level=2&emotion=happiness&format=mp3&speaker=hikari&volume=200&speed=120&pitch=130";
 char *tts_parms3 ="&emotion_level=4&emotion=anger&format=mp3&speaker=bear&volume=200&speed=120&pitch=100";
 
 void VoiceText_tts(char *text,char *tts_parms) {
@@ -157,6 +172,9 @@ void loop() {
   static int lastms = 0;
   if (M5.BtnA.wasPressed())
   {
+    avatar.setFace(faces[0]);
+    avatar.setColorPalette(*cps[0]);
+    delay(1000);
     avatar.setExpression(Expression::Happy);
     VoiceText_tts(text1, tts_parms1);
     avatar.setExpression(Expression::Neutral);
@@ -164,15 +182,21 @@ void loop() {
   }
   if (M5.BtnB.wasPressed())
   {
+    avatar.setFace(faces[1]);
+    avatar.setColorPalette(*cps[1]);
+    delay(1000);
     avatar.setExpression(Expression::Happy);
-    VoiceText_tts(text1, tts_parms2);
+    VoiceText_tts(text2, tts_parms2);
     avatar.setExpression(Expression::Neutral);
     Serial.println("mp3 begin");
   }
   if (M5.BtnC.wasPressed())
   {
+    avatar.setFace(faces[2]);
+    avatar.setColorPalette(*cps[2]);
+    delay(1000);
     avatar.setExpression(Expression::Happy);
-    VoiceText_tts(text1, tts_parms3);
+    VoiceText_tts(text3, tts_parms3);
     avatar.setExpression(Expression::Neutral);
     Serial.println("mp3 begin");
   }
@@ -191,6 +215,21 @@ void loop() {
     }
   }
 #else
+  if (M5.BtnA.wasPressed())
+  {
+    avatar.setFace(faces[0]);
+    avatar.setColorPalette(*cps[0]);
+  }
+  if (M5.BtnB.wasPressed())
+  {
+    avatar.setFace(faces[1]);
+    avatar.setColorPalette(*cps[1]);
+  }
+  if (M5.BtnC.wasPressed())
+  {
+    avatar.setFace(faces[2]);
+    avatar.setColorPalette(*cps[2]);
+  }
   avatar.setMouthOpenRatio(0.7);
   delay(200);
   avatar.setMouthOpenRatio(0.0);
