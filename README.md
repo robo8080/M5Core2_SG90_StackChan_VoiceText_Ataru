@@ -28,8 +28,9 @@ ESP8266Audio 1.9.3<br>
 <br>
 
 ### M5Stack-Avatarライブラリを変更する ###
-* "Avatar.cpp"の下図赤枠部分を変更します。(バージョン 0.7.4以降では変更不要になりました。)
-![画像1](images/image1.png)<br><br><br>
+Windows11の場合はライブラリのソースはここにあります。<br>
+C:\Users\ユーザー名\Documents\Arduino\libraries\m5stack-avatar<br>
+
 * "Avatar.cpp""Avatar.h"の下図赤枠部分を追加します。
 ![画像2](images/image2.png)<br><br><br>
 ![画像3](images/image3.png)<br><br><br>
