@@ -1,15 +1,13 @@
 #include <Arduino.h>
 
+#include <M5Unified.h>
 #if defined(ARDUINO_M5STACK_Core2)
-  #include <M5Core2.h>
   #define SERVO_PIN_X 13
   #define SERVO_PIN_Y 14
 #elif defined( ARDUINO_M5STACK_FIRE )
-  #include <M5Stack.h>
   #define SERVO_PIN_X 21
   #define SERVO_PIN_Y 22
 #elif defined( ARDUINO_M5Stack_Core_ESP32 )
-  #include <M5Stack.h>
   #define SERVO_PIN_X 21
   #define SERVO_PIN_Y 22
 #endif
@@ -20,7 +18,7 @@
 #include "RamFace.h"
 
 #if defined(ARDUINO_M5STACK_Core2)
-//#define USE_VOICE_TEXT //for M5STACK_Core2 Only
+#define USE_VOICE_TEXT //for M5STACK_Core2 Only
 #endif
 
 #ifdef USE_VOICE_TEXT
@@ -88,12 +86,15 @@ void setup() {
 #ifdef USE_VOICE_TEXT
   preallocateBuffer = (uint8_t*)ps_malloc(preallocateBufferSize);
 #endif
+  auto cfg = M5.config();
+  M5.begin(cfg);
+  
+  auto spk_config = M5.Speaker.config();
+  spk_config.sample_rate = 88200;
+  spk_config.stereo = false;
+  M5.Speaker.config(spk_config);
+  //M5.Speaker.begin();
 
-#if defined(ARDUINO_M5STACK_Core2)
-  M5.begin(true, true, true, false, kMBusModeOutput);
-#elif defined( ARDUINO_M5STACK_FIRE ) || defined( ARDUINO_M5Stack_Core_ESP32 )
-  M5.begin(true, true, true, false); // Grove.Aを使う場合は第四引数(I2C)はfalse
-#endif
   if (servo_x.attach(SERVO_PIN_X, START_DEGREE_VALUE_X, DEFAULT_MICROSECONDS_FOR_0_DEGREE, DEFAULT_MICROSECONDS_FOR_180_DEGREE)) {
     Serial.print("Error attaching servo x");
   }
@@ -105,8 +106,7 @@ void setup() {
   setSpeedForAllServos(60);
 
 #ifdef USE_VOICE_TEXT
-  M5.Axp.SetSpkEnable(true);
-  M5.Lcd.setBrightness(30);
+  M5.Lcd.setBrightness(100);
   M5.Lcd.clear();
   M5.Lcd.setTextSize(2);
   delay(1000);
@@ -123,10 +123,15 @@ void setup() {
   }
   Serial.println("\nConnected");
   M5.Lcd.println("\nConnected");
+  M5.Speaker.tone(2000, 500);
+  delay(500);
+  M5.Speaker.tone(1000, 500);
+  delay(1000);
   
   audioLogger = &Serial;
-  out = new AudioOutputI2SLipSync();
+  out = new AudioOutputI2SLipSync(0, 0);
   out->SetPinout(12, 0, 2);           // ピン配列を指定（BCK, LRCK, DATA)BashCopy
+  out->SetOutputModeMono(false);
   mp3 = new AudioGeneratorMP3();
 #endif
 
@@ -142,8 +147,11 @@ void setup() {
   cps[1]->set(COLOR_PRIMARY, TFT_BLACK);
   cps[1]->set(COLOR_BACKGROUND, TFT_WHITE);
   cps[1]->set(COLOR_SECONDARY, TFT_WHITE);
+  cps[2]->set(COLOR_PRIMARY, TFT_WHITE);
+  cps[2]->set(COLOR_BACKGROUND, TFT_BLACK);
+  cps[2]->set(COLOR_SECONDARY, TFT_WHITE);
 
-  avatar.init();
+  avatar.init(8);
   avatar.setFace(faces[0]);
   avatar.setColorPalette(*cps[0]);
   avatar.addTask(behavior, "behavior");
@@ -172,6 +180,7 @@ void loop() {
   static int lastms = 0;
   if (M5.BtnA.wasPressed())
   {
+    M5.Speaker.tone(2000, 500);
     avatar.setFace(faces[0]);
     avatar.setColorPalette(*cps[0]);
     delay(1000);
@@ -182,6 +191,7 @@ void loop() {
   }
   if (M5.BtnB.wasPressed())
   {
+    M5.Speaker.tone(2000, 500);
     avatar.setFace(faces[1]);
     avatar.setColorPalette(*cps[1]);
     delay(1000);
@@ -192,6 +202,7 @@ void loop() {
   }
   if (M5.BtnC.wasPressed())
   {
+    M5.Speaker.tone(2000, 500);
     avatar.setFace(faces[2]);
     avatar.setColorPalette(*cps[2]);
     delay(1000);

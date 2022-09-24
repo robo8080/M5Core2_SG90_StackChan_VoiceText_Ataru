@@ -8,14 +8,14 @@ namespace m5avatar {
 AtaruEye::AtaruEye(uint16_t x, uint16_t y, uint16_t r, bool isLeft) : AtaruEye(r, isLeft) {}
 
 AtaruEye::AtaruEye(uint16_t r, bool isLeft) : r{r}, isLeft{isLeft} {}
-void AtaruEye::draw(TFT_eSPI *spi, BoundingRect rect, DrawContext *ctx) {
+void AtaruEye::draw(M5Canvas *spi, BoundingRect rect, DrawContext *ctx) {
   Expression exp = ctx->getExpression();
   uint32_t cx = rect.getCenterX();
   uint32_t cy = rect.getCenterY();
   Gaze g = ctx->getGaze();
   ColorPalette *cp = ctx->getColorPalette();
   uint16_t primaryColor = cp->get(COLOR_PRIMARY);
-  uint16_t backgroundColor = COLOR_DEPTH == 1 ? ERACER_COLOR : cp->get(COLOR_BACKGROUND);
+  uint16_t backgroundColor = ctx->getColorDepth() == 1 ? ERACER_COLOR : cp->get(COLOR_BACKGROUND);
   uint32_t offsetX = g.getHorizontal() * 8;
   uint32_t offsetY = g.getVertical() * 5;
   float eor = ctx->getEyeOpenRatio();
