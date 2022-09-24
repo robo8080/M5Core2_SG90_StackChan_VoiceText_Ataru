@@ -8,7 +8,7 @@ namespace m5avatar {
 RamEyeblow::RamEyeblow(uint16_t w, uint16_t h, bool isLeft)
     : width{w}, height{h}, isLeft{isLeft} {}
 
-void RamEyeblow::draw(TFT_eSPI *spi, BoundingRect rect, DrawContext *ctx) {
+void RamEyeblow::draw(M5Canvas *spi, BoundingRect rect, DrawContext *ctx) {
   Expression exp = ctx->getExpression();
   uint32_t x = rect.getLeft();
   uint32_t y = rect.getTop();
@@ -17,7 +17,7 @@ void RamEyeblow::draw(TFT_eSPI *spi, BoundingRect rect, DrawContext *ctx) {
   uint32_t offsetY = g.getVertical() * 7;
   x += offsetX;
   y += offsetY;
-  uint32_t primaryColor = ctx->getColorPalette()->get(COLOR_PRIMARY);
+  uint16_t primaryColor = ctx->getColorPalette()->get(COLOR_PRIMARY);
   if (width == 0 || height == 0) {
     return;
   }

@@ -13,7 +13,7 @@ RamMouth::RamMouth(uint16_t minWidth, uint16_t maxWidth, uint16_t minHeight,
       minHeight{minHeight},
       maxHeight{maxHeight} {}
 
-void RamMouth::draw(TFT_eSPI *spi, BoundingRect rect, DrawContext *ctx) {
+void RamMouth::draw(M5Canvas *spi, BoundingRect rect, DrawContext *ctx) {
   Expression exp = ctx->getExpression();
   uint16_t primaryColor = ctx->getColorPalette()->get(COLOR_PRIMARY);
   uint16_t backgroundColor = ctx->getColorPalette()->get(COLOR_BACKGROUND);

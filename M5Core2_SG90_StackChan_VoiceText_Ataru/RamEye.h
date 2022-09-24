@@ -5,7 +5,7 @@
 #ifndef RAMEYE_H_
 #define RAMEYE_H_
 
-#include <utility/In_eSPI.h>
+#include <M5GFX.h>
 #include "DrawContext.h"
 #include "Drawable.h"
 
@@ -24,7 +24,7 @@ class RamEye final : public Drawable {
   ~RamEye() = default;
   RamEye(const RamEye &other) = default;
   RamEye &operator=(const RamEye &other) = default;
-  void draw(TFT_eSPI *spi, BoundingRect rect,
+  void draw(M5Canvas *spi, BoundingRect rect,
             DrawContext *drawContext) override;
   // void draw(TFT_eSPI *spi, DrawContext *drawContext) override; // deprecated
 };

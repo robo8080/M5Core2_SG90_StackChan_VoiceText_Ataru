@@ -5,7 +5,7 @@
 #ifndef ATARUEYEBLOW_H_
 #define ATARUEYEBLOW_H_
 
-#include <utility/In_eSPI.h>
+#include <M5GFX.h>
 #include "BoundingRect.h"
 #include "DrawContext.h"
 #include "Drawable.h"
@@ -24,7 +24,7 @@ class AtaruEyeblow final : public Drawable {
   ~AtaruEyeblow() = default;
   AtaruEyeblow(const AtaruEyeblow &other) = default;
   AtaruEyeblow &operator=(const AtaruEyeblow &other) = default;
-  void draw(TFT_eSPI *spi, BoundingRect rect,
+  void draw(M5Canvas *spi, BoundingRect rect,
             DrawContext *drawContext) override;
 };
 

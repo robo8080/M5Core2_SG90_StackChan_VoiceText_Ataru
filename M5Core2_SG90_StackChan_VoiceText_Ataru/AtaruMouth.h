@@ -5,7 +5,7 @@
 #ifndef ATARUMOUTH_H_
 #define ATARUMOUTH_H_
 
-#include <utility/In_eSPI.h>
+#include <M5GFX.h>
 #include "BoundingRect.h"
 #include "DrawContext.h"
 #include "Drawable.h"
@@ -26,7 +26,7 @@ class AtaruMouth final : public Drawable {
   AtaruMouth &operator=(const AtaruMouth &other) = default;
   AtaruMouth(uint16_t minWidth, uint16_t maxWidth, uint16_t minHeight,
         uint16_t maxHeight);
-  void draw(TFT_eSPI *spi, BoundingRect rect,
+  void draw(M5Canvas *spi, BoundingRect rect,
             DrawContext *drawContext) override;
 };
 

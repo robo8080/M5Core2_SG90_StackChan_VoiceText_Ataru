@@ -11,32 +11,17 @@ M5Core2_SG90_StackChan_VoiceText_Ataru
 * [ｽﾀｯｸﾁｬﾝ M5GoBottom版組み立てキット](https://raspberrypi.mongonta.com/about-products-stackchan-m5gobottom-version/ "Title")<br>
 
 ### このプログラムをビルドするのに必要な物 ###
-* Arduino IDE (バージョン 1.8.15で動作確認をしました。~~1.8.16だとエラーになるという報告を頂きました。~~)<br>
-* [M5Stack-Avatar](https://github.com/meganetaaan/m5stack-avatar/ "Title")ライブラリ(バージョン 0.7.4で動作確認をしました。)<br>
+
+※ 2022/9/24の変更でM5Unifiedに対応しました。
+最新環境でビルドができない、動作しないといった場合まずはバージョンを下記に合わせてみてください。
+
+* arduino-esp32(v2.0.5で動作確認しました。)
+* Arduino IDE (バージョン 1.8.16で動作確認をしました。)<br>
+* [M5Unified](https://github.com/m5stack/M5Unified)ライブラリ(バージョン 0.0.7で動作確認をしました。)
+* [M5Stack-Avatar](https://github.com/meganetaaan/m5stack-avatar/ "Title")ライブラリ(バージョン 0.8.1で動作確認をしました。)<br>※ v0.8.1だと標準のAvatarFaceホワイトが水色になってしまう不具合がありますが動作に支障はありません。
 * [ServoEasing](https://github.com/ArminJo/ServoEasing/ "Title")ライブラリ(バージョン 2.4.0で動作確認をしました。)<br>
 * [ESP32Servo](https://github.com/madhephaestus/ESP32Servo/ "Title")ライブラリ(バージョン 0.9.0で動作確認をしました。)<br>
-* [ESP8266Audio](https://github.com/earlephilhower/ESP8266Audio/ "Title")ライブラリ(バージョン 1.9.3で動作確認をしました。)<br><br>
-(arduino-esp32 v2.0.1だとエラーになるという報告を頂きました。)<br>
-
-* 以下のバージョンの組み合わせで動いたという報告を頂きました。<br>
-Arduino IDE 1.8.19<br>
-Arduino-esp32 1.0.6 (ボードマネージャ)<br>
-M5Stack-Avatar 0.7.4<br>
-ServoEasing 2.4.0<br>
-ESP32Servo 0.9.0<br>
-ESP8266Audio 1.9.3<br>
-<br>
-
-### M5Stack-Avatarライブラリを変更する ###
-Windows11の場合はライブラリのソースはここにあります。<br>
-C:\Users\ユーザー名\Documents\Arduino\libraries\m5stack-avatar<br>
-
-* "Avatar.cpp""Avatar.h"の下図赤枠部分を追加します。
-![画像2](images/image2.png)<br><br><br>
-![画像3](images/image3.png)<br><br><br>
-* "DrawContext.h"の下図赤枠部分を変更します。
-![画像4](images/image4.png)<br><br><br>
-
+* [ESP8266Audio](https://github.com/earlephilhower/ESP8266Audio/ "Title")ライブラリ(バージョン 1.9.7で動作確認をしました。)<br><br>
 
 ---
 

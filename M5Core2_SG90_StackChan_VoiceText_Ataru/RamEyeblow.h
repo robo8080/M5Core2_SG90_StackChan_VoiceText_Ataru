@@ -5,7 +5,7 @@
 #ifndef RAMEYEBLOW_H_
 #define RAMEYEBLOW_H_
 
-#include <utility/In_eSPI.h>
+#include <M5GFX.h>
 #include "BoundingRect.h"
 #include "DrawContext.h"
 #include "Drawable.h"
@@ -24,7 +24,7 @@ class RamEyeblow final : public Drawable {
   ~RamEyeblow() = default;
   RamEyeblow(const RamEyeblow &other) = default;
   RamEyeblow &operator=(const RamEyeblow &other) = default;
-  void draw(TFT_eSPI *spi, BoundingRect rect,
+  void draw(M5Canvas *spi, BoundingRect rect,
             DrawContext *drawContext) override;
 };
 

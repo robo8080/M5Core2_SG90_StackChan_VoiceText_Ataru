@@ -5,7 +5,7 @@
 #ifndef ATARUEYE_H_
 #define ATARUEYE_H_
 
-#include <utility/In_eSPI.h>
+#include <M5GFX.h>
 #include "DrawContext.h"
 #include "Drawable.h"
 
@@ -24,7 +24,7 @@ class AtaruEye final : public Drawable {
   ~AtaruEye() = default;
   AtaruEye(const AtaruEye &other) = default;
   AtaruEye &operator=(const AtaruEye &other) = default;
-  void draw(TFT_eSPI *spi, BoundingRect rect,
+  void draw(M5Canvas *spi, BoundingRect rect,
             DrawContext *drawContext) override;
   // void draw(TFT_eSPI *spi, DrawContext *drawContext) override; // deprecated
 };
