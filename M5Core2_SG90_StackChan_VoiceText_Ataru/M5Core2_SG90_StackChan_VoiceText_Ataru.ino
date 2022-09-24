@@ -18,7 +18,7 @@
 #include "RamFace.h"
 
 #if defined(ARDUINO_M5STACK_Core2)
-#define USE_VOICE_TEXT //for M5STACK_Core2 Only
+//#define USE_VOICE_TEXT //for M5STACK_Core2 Only
 #endif
 
 #ifdef USE_VOICE_TEXT
