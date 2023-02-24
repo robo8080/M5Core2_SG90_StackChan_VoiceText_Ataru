@@ -66,7 +66,19 @@ void behavior(void *args)
     float open = (float)level/10000.0;
     avatar->setMouthOpenRatio(open);
 #endif
+ 
+    vTaskDelay(1/portTICK_PERIOD_MS);
+//    delay(50);
+  }
+}
 
+void servoloop(void *args)
+{
+  float gazeX, gazeY;
+  DriveContext *ctx = (DriveContext *)args;
+  for (;;)
+  {
+    Avatar *avatar = ctx->getAvatar();
     avatar->getGaze(&gazeY, &gazeX);
     servo_x.setEaseTo(START_DEGREE_VALUE_X + (int)(20.0 * gazeX));
     if(gazeY < 0) {
@@ -75,9 +87,7 @@ void behavior(void *args)
       servo_y.setEaseTo(START_DEGREE_VALUE_Y + (int)(10.0 * gazeY));
     }
     synchronizeAllServosStartAndWaitForAllServosToStop();
-  
-    delay(33);
-//    delay(50);
+    vTaskDelay(33/portTICK_PERIOD_MS);
   }
 }
 
@@ -155,6 +165,7 @@ void setup() {
   avatar.setFace(faces[0]);
   avatar.setColorPalette(*cps[0]);
   avatar.addTask(behavior, "behavior");
+  avatar.addTask(servoloop, "servoloop");
 }
 
 #ifdef USE_VOICE_TEXT
